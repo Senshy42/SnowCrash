@@ -43,4 +43,15 @@ je suis en train de réaliser que j'ai l'air de hacker le projet au lieu de cher
 
 Il est 5h12, cette histoire a commencé vers minuit et ce qui devait être mes notes commence à ressembler à un journal de bord. 
 
-cd /opt/snowcrash/level00 -> hiro 
+cd /opt/snowcrash/level00 -> hiro
+
+Les seules commandes qui fonctionnent dans flag00 sont whoami et id, mais en faisant une recherche strings, ils sont également hardcodés.
+Néanmoins, je trouve aussi des fonctions appartenant à la GLIBC, dont geteuid, j'imagine donc que je dois pouvoir trouver le vrai id avec une autre commande que id ?
+Rien de concluant, level00 n'a aucun processus particulier, j'abandonne la piste, retourne à analyser les strings du binaire. 
+
+Pendant ce temps, mon collègue porte son attention sur une section flag_data. 
+Avec la commande objdump -s -j (filtre pour accéder à la ligne de flag_data, afficher son adresse mémoire, ses octets et traduction ASCII), on tombe sur une suite de caractères qui après vérification n'est pas encodée.
+
+On teste, le mot de passe fonctionne. 
+
+Niveau terminé. 
